@@ -1,0 +1,51 @@
+package com.sapient.productservice.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.mysql.cj.xdevapi.SessionFactory;
+import com.sapient.productservice.model.Product;
+@Repository(value="HybernateDAOImpl")
+public class HybernateDAOImpl implements ProductDAO
+{
+	@Autowired
+    private SessionFactory sessionFactory;
+
+
+	@Override
+	public Product save(Product product) {
+		Session session = sessionFactory.getCurrentSession();
+        session.save(product);
+        return product;
+	}
+
+	@Override
+	public List<Product> listAll() {
+		Session currentSession = sessionFactory.getCurrentSession();
+        return currentSession.createQuery("from product ").list();
+	}
+
+	@Override
+	public Product findById(long id) {
+		
+		return sessionFactory.getCurrentSession().get(Employee.class, id);
+	}
+
+	
+	public void deleteProduct(long id) {
+		Session session = sessionFactory.getCurrentSession();
+        Product product = session.byId(Product.class).load(id);
+        session.delete(product);
+		
+	}
+
+	
+	public void updateProduct(int id, Product product) {
+		
+		
+	}
+
+}

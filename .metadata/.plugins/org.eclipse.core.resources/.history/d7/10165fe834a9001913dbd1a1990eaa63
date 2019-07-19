@@ -1,0 +1,5 @@
+package com.sapient.productservice.config;
+
+public class SwaggerConfig {
+
+}

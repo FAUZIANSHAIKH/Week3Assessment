@@ -1,0 +1,5 @@
+package com.sapient.productservice.repository;
+import com.sapient
+public interface ProductRepository extends CrudRepository<Product,Integer> {
+
+}

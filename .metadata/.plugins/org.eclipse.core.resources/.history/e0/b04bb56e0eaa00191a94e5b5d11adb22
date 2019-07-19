@@ -1,0 +1,94 @@
+package com.sapient.dao;
+
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.sapient.model.Post;
+import com.sapient.model.User;
+
+@Repository(value="HybernateDAOImpl")
+public class HybernateDAOImpl implements UserDAO
+{
+	@Autowired
+    private SessionFactory sessionFactory;
+
+
+
+	public String saveUser(User user) {
+		Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(user);
+        return "Success";
+	}
+
+	
+	public List<User> listAll() {
+		Session currentSession = sessionFactory.getCurrentSession();
+        return currentSession.createQuery("from User ").list();
+	}
+
+
+	public User findById(int id) {
+		
+		return sessionFactory.getCurrentSession().get(User.class, id);
+	}
+
+	
+	public void deleteUser(int id) {
+		Session session = sessionFactory.getCurrentSession();
+        User user = session.byId(User.class).load(id);
+        session.delete(user);
+	}
+
+	
+	public void updateUser(int id, User user) {
+		
+		Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(user);
+        
+	}
+	
+	public String savePost(Post post) {
+		Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(post);
+        return "Success";
+	}
+
+	
+	public List<Post> listAllPost() {
+		Session currentSession = sessionFactory.getCurrentSession();
+        return currentSession.createQuery("from Post ").list();
+	}
+
+	
+	public Post findPostById(int id) {
+		
+		return sessionFactory.getCurrentSession().get(Post.class, id);
+	}
+
+	
+	public void deletePostById(int id) {
+		Session session = sessionFactory.getCurrentSession();
+        Post post = session.byId(Post.class).load(id);
+        session.delete(post);
+	}
+//	public void deletePost() {
+//		Session session = sessionFactory.getCurrentSession();
+//        Post post = session.byId("from Post").list();
+//        session.delete(post);
+//	}
+	
+	
+	public void updatePost(int id, User post) {
+		
+		Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(post);
+        
+	}
+	
+
+}

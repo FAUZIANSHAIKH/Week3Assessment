@@ -1,0 +1,77 @@
+package com.sapient.service;
+import com.sapient.dao.UserDAO;
+import com.sapient.model.Post;
+import com.sapient.model.User;
+//import com.sapient.repository.UserRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
+
+
+	
+	@Service(value = "employeeService")
+	public class UserServiceImpl implements UserService {
+
+	    @Autowired( required = true)
+	    @Qualifier(value = "HybernateDAOImpl")
+	    private UserDAO userDAO;
+
+		public User saveUser(User user) {
+			
+			return null;
+		}
+
+		public List<User> fetchAllEmployees() {
+			
+			return null;
+		}
+
+		public User findById(int id) {
+			
+			return null;
+		}
+
+		public void deleteUser(int id) {
+			
+			
+		}
+
+		public void updateUser(int id, User user) {
+			
+			
+		}
+
+		public List<Post> listAllPost() {
+			
+			return null;
+		}
+
+		public User findPostById(int id) {
+			
+			return null;
+		}
+
+		public User savePost(Post post) {
+			
+			return null;
+		}
+
+		public void deletePostById(int id) {
+			
+			
+		}
+
+		public void deletePost() {
+			
+			
+		}
+
+}

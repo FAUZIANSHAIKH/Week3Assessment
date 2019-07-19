@@ -1,0 +1,5 @@
+package com.sapient.productservice.dao;
+
+public class HybernateDAOImpl {
+
+}

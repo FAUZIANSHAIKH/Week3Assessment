@@ -1,0 +1,42 @@
+package com.sapient.productservice.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.sapient.productservice.model.Product;
+@Repository(value="HybernateDAOImpl")
+public class HybernateDAOImpl implements ProductDAO
+{
+
+	
+	public Product save(Product product) {
+		
+		return null;
+	}
+
+	
+	public List<Product> listAll() {
+		
+		return null;
+	}
+
+	
+	public Product findById(long id) {
+		
+		return null;
+	}
+
+	
+	public void deleteProduct(long id) {
+	
+		
+	}
+
+	
+	public void updateProduct(int id, Product product) {
+		
+		
+	}
+
+}

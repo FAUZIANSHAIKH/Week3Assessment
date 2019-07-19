@@ -1,0 +1,5 @@
+package com.sapient.config;
+
+public class SwaggerConfig {
+
+}

@@ -1,0 +1,19 @@
+package com.sapient.service;
+import com.sapient.controller.Post;
+import com.sapient.model.User;
+
+	
+	import java.util.List;
+
+	public interface UserService {
+
+	    User saveUser(User user);
+	    public List<User> fetchAllEmployees();
+	    public User findById(int id);
+	    public void deleteUser(int id);
+	    public void updateUser(int id,User user);
+	    public List<Post> listAllPost();
+	    public User findPostById(int id)
+
+	}
+

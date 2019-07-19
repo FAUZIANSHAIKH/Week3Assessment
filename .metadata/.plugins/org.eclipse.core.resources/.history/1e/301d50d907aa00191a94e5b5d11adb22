@@ -1,0 +1,26 @@
+package com.sapient.service;
+import com.sapient.dao.ProductDAO;
+import com.sapient.model.Product;
+import com.sapient.repository.ProductRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
+
+
+	
+	@Service(value = "employeeService")
+	public class UserServiceImpl implements UserService {
+
+	    @Autowired( required = true)
+	    @Qualifier(value = "HybernateDAOImpl")
+	    private ProductDAO productDAO;
+
+}

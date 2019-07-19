@@ -1,0 +1,49 @@
+package com.sapient.productservice.service;
+
+import com.sapient.productservice.dao.ProductDAO;
+import com.sapient.productservice.model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service(value = "employeeService")
+public class ProductServiceImpl implements ProductService {
+
+    @Autowired( required = true)
+    @Qualifier(value = "mysqlDAOImpl")
+    private ProductDAO productDAO;
+
+    public ProductServiceImpl(@Qualifier(value = "mysqlDAOImpl")ProductDAO productDAO){
+        this.productDAO = productDAO;
+    }
+
+    public Product saveProduct(Product product) {
+        System.out.println("Inside the save employee method of Employee service class ....");
+        return productDAO.save(product);
+    }
+
+    public List<Product> fetchAllEmployees() {
+    	System.out.println("MYSQL Service");
+        return productDAO.listAll();
+    }
+
+    public Product findById(long id) {
+        return productDAO.findById(id);
+    }
+
+    public void deleteProduct(long id) {
+    	productDAO.deleteProduct(id);
+    }
+
+	
+	public void updateProduct(int id, Product product) {
+		System.out.println("Case inside the update product method");
+		productDAO.updateProduct(id, product);
+		
+	}
+
+	
+}

@@ -1,0 +1,24 @@
+package com.sapient.springdemo.client;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.sapient.springdemo.model.Employee;
+import com.sapient.springdemo.service.EmployeeService;
+import java.util.List;
+
+public class EmployeeCRUDClient {
+
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
+        //Java configuration
+        //ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        EmployeeService employeeService = context.getBean("employeeService" ,EmployeeService.class);
+       // Employee pavan = new Employee(23, "Pavan");
+        List<Employee> employeeList=employeeService.fetchAllEmployees();
+        employeeList.forEach(System.out::println);
+        employeeService.findById(1);
+        employeeService.deleteEmployee(1);
+        
+    }
+}

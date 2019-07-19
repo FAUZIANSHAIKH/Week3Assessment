@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;employeeDetails&apos; in &apos;com.sapient.model.User&apos; to &apos;address&apos;&#x0D;&#x0A;- Original project: &apos;week3assessment&apos;&#x0D;&#x0A;- Original element: &apos;com.sapient.model.User.employeeDetails&apos;&#x0D;&#x0A;- Renamed element: &apos;com.sapient.model.User.address&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;employeeDetails&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java&lt;com.sapient.model{User.java[User^employeeDetails" name="address" references="true" setter="false" stamp="1563541853839" textual="false" version="1.0"/>
+</session>

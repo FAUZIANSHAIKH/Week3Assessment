@@ -1,0 +1,16 @@
+package com.sapient.productservice.dao;
+
+import com.sapient.productservice.model.Product;
+import java.util.List;
+
+public interface EmployeeDAO {
+
+    public Product save(Product product);
+
+    public List<Product> listAll();
+
+    public Employee findById(long id);
+
+    public void deleteEmployee(long id);
+
+}

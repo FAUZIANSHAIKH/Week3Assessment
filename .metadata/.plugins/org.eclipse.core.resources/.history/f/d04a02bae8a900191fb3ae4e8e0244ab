@@ -1,0 +1,5 @@
+package com.sapient.productservice.model;
+
+public class Dependency {
+
+}

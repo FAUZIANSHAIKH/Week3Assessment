@@ -1,0 +1,90 @@
+package com.sapient.springdemo.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sapient.springdemo.model.Employee;
+import com.sapient.springdemo.service.EmployeeService;
+
+@Controller
+@RequestMapping("/employee")
+public class RegisterController {
+
+	@Autowired
+	private EmployeeService employeeService;
+    @GetMapping("/displayall")
+    public String displayAll(ModelMap model){
+    	//ApplicationContext context=new ClassPathXmlApplicationContext("application-context.xml");
+    	//EmployeeService employeeService=context.getBean("employeeService",EmployeeService.class);
+    	List<Employee> list=employeeService.fetchAllEmployees();
+    	//System.out.println("ABCSJbcjdhf");
+    	//model.addAttribute("empList",list);
+    	
+    	 return "displayall";
+    
+    }
+    @GetMapping("/{id}")
+    public String displayEmployee(@PathVariable("id") long id,Model model)
+    {
+    	
+    	Employee employee=employeeService.findById(id);
+    	model.addAttribute("employee",employee);
+        return "employee";
+    }
+    
+    @GetMapping("/register")
+    public String registerEmployee(Model model)
+    {
+    	model.addAttribute("employee",new Employee());
+    	return "register";
+    }
+
+    @GetMapping("/findById/{id}")
+	public String delete(@PathVariable("id") long id,Model model)
+	{
+    	Employee employee=employeeService.findById(id);
+    	model.addAttribute("employee",employee);
+    	return "employee";
+	}
+    
+    @PostMapping("/delete")
+	public String deleteUpdate(@ModelAttribute("employee") Employee employee)
+	{
+    	
+    	employeeService.deleteEmployee(employee.getId());
+    	return "delete";
+	}
+    
+    @PostMapping("/register")
+    public String registerEmployee( @ModelAttribute("employee") Employee employee,BindingResult bindingResult) 
+    {
+    	      if (bindingResult.hasErrors()) 
+    	      {
+    	         return "register";
+    	      }
+    	employeeService.saveEmployee(employee);
+    	System.out.println(employee);
+    	
+    	return "success";
+    }
+//    @PostMapping("/")
+//    @ResponseStatus{HttpStatus.CREATED}
+//    public RegisterController() {
+//		// TODO Auto-generated constructor stub
+//	}
+}

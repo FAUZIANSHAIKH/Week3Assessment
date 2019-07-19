@@ -1,0 +1,67 @@
+package com.sapient.dao;
+
+
+	import com.sapient.model.Post;
+import com.sapient.model.User;
+	import org.springframework.stereotype.Repository;
+
+	import java.util.ArrayList;
+	import java.util.List;
+
+	@Repository(value="employeeDAO")
+	public class UserDAOImpl implements UserDAO {
+
+	    private static List<User> users = new ArrayList<User>();
+
+	    public String save(User user) {
+	        users.add(user);
+	        return "Success";
+	    }
+
+	    public List<User> listAll() {
+	        System.out.println("Inside the list all method of EmployeeDAO");
+
+	        return null;
+	    }
+
+	    public User findById(int id) {
+	        System.out.println("Inside the findBYId method of EmployeeDAO");
+	        return null;
+	    }
+
+	    public void deleteUser(int id) {
+	        System.out.println("inside the delete method of EmployeeDAO");
+	    }
+
+		
+		public void updateUser(int id, User user) {
+			System.out.println("inside the update method of EmployeeDAO");
+			
+		}
+
+		public String savePost(Post post) {
+			System.out.println("inside the save method of EmployeeDAO")
+			return null;
+		}
+
+		public List<Post> listAllPost() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Post findPostById(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public void deletePostById(int id) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void updatePost(int id, User post) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+
